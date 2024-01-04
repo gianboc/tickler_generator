@@ -14,5 +14,8 @@ A Tickler File, as conceptualized in the GTD (Getting Things Done) methodology b
     - To generate markdown files for the year 2024, use `python3 generate.py 2024`.
     - To run the test function, use `python3 generate.py test`. This will execute it only up to the end of February
 
-4. The script will generate a markdown file for each day of the specified year, or run the test function, depending on the argument provided. Each generated markdown file is named with the format `YYYY-MM-DD-WeekWW-D.md`, where `YYYY` is the year, `MM` is the month, `DD` is the day, `WeekWW` is the week number (like "Week1", "Week2", "Week17", etc.), and `D` is the day of the week. For example, a file for March 3, 2024, which falls on the 9th week and is a Sunday, would be named `2024-03-03-Week9-Sunday.md`. These files are saved in the "ticklers" folder.
+4. The script will generate a markdown file for each day of the specified year, or run the test function, depending on the argument provided.
+Each generated markdown file is named with the format `YYYY-MM-DD-WeekWW-MonthDD-DayOfWeek.md`, where `YYYY` is the year, `MM` is the month, `DD` is the day, `WeekWW` is the week number (like "Week1", "Week2", "Week17", etc.), `Month` is the abbreviation of the month (like "Jan", "Feb", "Mar", etc.), and `DayOfWeek` is the day of the week (like "Monday", "Tuesday", "Wednesday", etc.).
+For example, a file for March 3, 2024, which falls on the 9th week and is a Sunday, would be named `2024-03-03-Week9-Mar03-Sunday.md`.
+These files are saved in the "ticklers" folder.
 
