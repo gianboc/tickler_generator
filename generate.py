@@ -24,11 +24,14 @@ def generate_ticklers(year, end_month, end_day):
     while current_date <= end_date:
         week_number = current_date.isocalendar()[1]
         day_name = current_date.strftime("%A")
-        file_name = current_date.strftime("%Y-%m-%d-Week") + str(week_number) + "-" + day_name
+        month_abbrev = current_date.strftime("%b")
+        month_name = current_date.strftime("%B")
+        day_abbrev = current_date.strftime("%d")
+        file_name = current_date.strftime("%Y-%m-%d-Week") + str(week_number) + "-" + month_abbrev + day_abbrev + "-" + day_name
         file_path = os.path.join(ticklers_folder, file_name + ".md")
 
         with open(file_path, "w") as file:
-            file.write("# " + file_name)
+            file.write(f"Good morning! Today is {day_name}, {month_name} {day_abbrev}\n\n")
         print(file_path)
 
         current_date += datetime.timedelta(days=1)
