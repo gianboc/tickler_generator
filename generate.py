@@ -1,0 +1,50 @@
+import os
+import datetime
+import argparse
+import glob
+
+def generate_ticklers(year, end_month, end_day):
+    """
+    Generate tickler files for a given year.
+
+    Args:
+        year (int): The year for which tickler files are generated.
+        end_month (int): The end month of the tickler generation period.
+        end_day (int): The end day of the tickler generation period.
+    """
+    start_date = datetime.date(year, 1, 1)
+    end_date = datetime.date(year, end_month, end_day)
+    current_date = start_date
+
+    # Remove all files in the "ticklers" folder
+    ticklers_folder = os.path.join(os.path.dirname(__file__), "ticklers")
+    for file_path in glob.glob(os.path.join(ticklers_folder, "*.md")):
+        os.remove(file_path)
+
+    while current_date <= end_date:
+        week_number = current_date.isocalendar()[1]
+        day_name = current_date.strftime("%A")
+        file_name = current_date.strftime("%Y-%m-%d-Week") + str(week_number) + "-" + day_name
+        file_path = os.path.join(ticklers_folder, file_name + ".md")
+
+        with open(file_path, "w") as file:
+            file.write("# " + file_name)
+        print(file_path)
+
+        current_date += datetime.timedelta(days=1)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("input", help="Enter 'test' to run test function or a year to generate markdown files for that year")
+    args = parser.parse_args()
+
+    if args.input.lower() == 'test':
+        year = 2024
+        end_month = 2
+        end_day = 28
+    else:
+        year = int(args.input)
+        end_month = 12
+        end_day = 31
+
+    generate_ticklers(year, end_month, end_day)
