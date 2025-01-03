@@ -1,4 +1,13 @@
 import os
+# Usage:
+#     This script generates tickler files for a given year. To run the script, use the following command:
+#     python generate.py <year>
+#     Replace <year> with the desired year for which you want to generate tickler files. For example:
+#     python generate.py 2024
+#     Alternatively, you can run the script in test mode by passing 'test' as the argument:
+#     python generate.py test
+#     In test mode, the script will generate tickler files for the period from January 1, 2024, to February 28, 2024.
+
 import datetime
 import argparse
 import glob
